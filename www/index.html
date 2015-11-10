@@ -35,17 +35,28 @@
 
       <ion-content>
 
-        <div class="list list-inset">
-          <div class="item item-divider">Header</div>
-          <div class="item item-image item-body"><!-- item-body : do not need item-text-wrap -->
-            <img src="http://placehold.it/600x200" alt="Item image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at purus purus. Quisque orci metus, lacinia quis fermentum id, hendrerit eu nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sit amet nisi at mi consectetur posuere at a justo. Fusce aliquet at magna id maximus. In a varius neque. Fusce mattis risus dui, non eleifend nibh venenatis vel.</p>
+        <div class="list"><!-- you can change list to card or list list-inset -->
+
+          <label class="item item-input"><!-- -floating-label : label doesn't show up until you start type something -->
+            <span class="input-label">First Name</span>
+            <input type="text" placeholder="Your first name">
+          </label>
+
+          <label class="item item-input"><!-- -stacked-label : label on top of input -->
+            <span class="input-label">Last Name</span>
+            <input type="text" placeholder="Your last name">
+          </label>
+
+          <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+              <input type="text" placeholder="Address"> 
+            </label>
+            <button class="button button-small">search</button>
           </div>
-          <div class="item item-icon-left item-text-wrap"><!-- item-text-wrap : wrap text -->
-            <i class="icon ion-home"></i>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse at purus purus. Quisque orci metus, lacinia quis fermentum id, hendrerit eu nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus sit amet nisi at mi consectetur posuere at a justo. Fusce aliquet at magna id maximus. In a varius neque. Fusce mattis risus dui, non eleifend nibh venenatis vel.
-          </div>
-          <div class="item item-divider">Footer</div>
+
+          <div class="item item-input-inset">
+		<textarea placeholder="Comments"></textarea>
+	  </div>
         </div>
 
       </ion-content>
