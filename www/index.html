@@ -33,13 +33,13 @@
 
       </ion-header-bar>
 
-      <div class="tabs-striped tabs-background-light tabs-color-calm tabs-top"><!--remove this div and go bottom-->
-        <div class="tabs tabs-icon-top">
-          <a class="tab-item tab-item-left"><i class="icon ion-home"></i>Home</a>
-          <a class="tab-item"><i class="icon ion-person"></i>About</a>
-          <a class="tab-item"><i class="icon ion-calendar"></i>Calendar</a>
-        </div>
-      </div><!--end div tabs-top-->
+      <ion-tabs class="tabs-icon-top"><!--ion-tabs with 's'-->
+
+        <ion-tab badge="1" badge-style="badge-assertive" icon="ion-home" title="Home"></ion-tab><!--ion-tab without 's'-->
+        <ion-tab icon="ion-person" title="About"></ion-tab>
+        <ion-tab icon="ion-calendar" title="Calendar"></ion-tab>
+
+      </ion-tabs>
 
     </ion-pane>
   </body>
