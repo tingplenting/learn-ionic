@@ -23,85 +23,38 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+  <ion-pane ng-controller="ListController"><!-- you can controll header also -->
 
-      <ion-header-bar class="bar-positive">
+        <ion-header-bar class="bar-dark">
+	  <button class="button button-icon ion-minus-circled" ng-click="data.showDelete = !data.showDelete; data.showReorder = false;"></button>
+          <h2 class="title">Artist List</h2>
+	  <button class="button button-icon ion-navicon" ng-click="data.showReorder = !data.showReorder; data.showDelete = false;"></button><!-- toggle when button click -->
+        </ion-header-bar>
 
-        <button class="icon ion-navicon button button-clear"></button>
-        <h1 class="title">Ionic Blank Starter</h1>
-        <button class="icon ion-gear-a button button-clear"></button>
-
-      </ion-header-bar>
-
-      <ion-content>
-
-        <div class="list"><!-- you can change list to card or list list-inset -->
-
-          <label class="item item-input"><!-- -floating-label : label doesn't show up until you start type something -->
-            <span class="input-label">First Name</span>
-            <input type="text" placeholder="Your first name">
+        <div class="bar bar-subheader
+          item-input-inset bar-light">
+          <label class="item-input-wrapper">
+            <i clas="icon ion-search placeholder-icon"></i> 
+            <input type="search" ng-model="query" placeholder="Search">
           </label>
+        </div>
 
-          <label class="item item-input"><!-- -stacked-label : label on top of input -->
-            <span class="input-label">Last Name</span>
-            <input type="text" placeholder="Your last name">
-          </label>
+	<ion-content  class="has-subheader">
 
-          <div class="item item-input-inset">
-            <label class="item-input-wrapper">
-              <input type="text" placeholder="Address"> 
-            </label>
-            <button class="button button-small">search</button>
-          </div>
+	<ion-list show-delete="data.showDelete" show-reorder="data.showReorder"><!-- positive click button on header clicked -->
+	 <ion-item ng-class="{'star': item.star}" ng-repeat="item in artists | filter: query" class="item-thumbnail-left item-icon-right item-text-wrap"> <!-- ng-repeat = loop start in <ion-item>, filter : [variable] -->
+		<img src="img/{{item.shortname}}.jpg" alt="{{ item.name }} Photo">
+		<h2>{{item.name}}</h2>
+		<h3>{{item.reknown}}</h3>
+		<p>{{item.bio | limitTo: 100}} {{ item.bio.length > 150 ? '&hellip;' : '' }}</p> <!-- limitTo : [number character limit] -->
+    <button class="button button-clear icon ion-star button-assertive" ng-click="toggleStar(item)" ng-show="item.star"></button><-- create toggleStar function for star tag -->
+    <ion-option-button class="button-dark" ng-click="toggleStar(item)"><i class="icon ion-star"></i></ion-option-button>
+		<ion-delete-button class="ion-minus-circled" ng-click="onItemDelete(item)"></ion-delete-button><!-- execute data.showDelete and create function action -->
+		<ion-reorder-button class="ion-navicon" on-reorder="moveItem(item, $fromIndex, $toIndex)"></ion-reorder-button><!-- execute data.showReorder and create function action -->
+		</ion-item><!-- end of loop -->
+	 </ion-list>
 
-          <div class="item item-input-inset">
-        		<textarea placeholder="Comments"></textarea>
-          </div>
-
-          <div class="item item-divider">Favorite social media netwook</div>
-
-          <label class="item item-radio">
-            <input type="radio" name="social">
-            <div class="item-content">Facebook</div>
-            <i class="radio-icon ion-social-facebook"></i>
-          </label>
-
-          <div class="item item-toggle">
-            <span class="input-label">Awasomeness</span>
-            <label class="toggle">
-              <input type="checkbox">
-              <div class="track">
-                <div class="handle"></div>
-              </div>
-            </label>
-          </div>
-       </div>
-
-       <div class="item range range-calm"> <!-- range with color -->
-         <i class="icon ion-sad-outline"></i>
-         <input type="range" name="feeling"
-          min="0" max="100" value="50">
-         <i class="icon ion-happy"></i>
-       </div>
-
-       <label class="item item-input item-select">
-          <div class="input-label">Favorite Pet</div> 
-          <select>
-            <option>Dogs</option> 
-            <option>Cats</option>
-            <option>Llamas</option>
-          </select>
-       </label>
-
-      </ion-content>
-
-      <ion-tabs class="tabs-icon-top"><!--ion-tabs with 's'-->
-
-        <ion-tab badge="1" badge-style="badge-assertive" icon="ion-home" title="Home"></ion-tab><!--ion-tab without 's'-->
-        <ion-tab icon="ion-person" title="About"></ion-tab>
-        <ion-tab icon="ion-calendar" title="Calendar"></ion-tab>
-
-      </ion-tabs>
+	</ion-content>
 
     </ion-pane>
   </body>
